@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { mService } from '@/services/api.service';
 import MoviesList from '@/components/MoviesList';
 import Pagination from '@/components/Pagination';
-import {IPaginationMoviesModel} from "@/Models/IPaginationMoviesModel";
 import {MovieModel} from "@/Models/MovieModel";
 
 const MoviesPage = () => {
@@ -16,10 +15,9 @@ const MoviesPage = () => {
     );
 
     useEffect(() => {
-        mService.getAllMovies().then(value => {
-            if (value) {
-                setMoviesPagination(value.items);
-            }
+        mService.getAllMovies(+page).then(value => {
+
+                setMoviesPagination(value);
         });
     }, [page]);
     console.log('MoviesPagination Items:', moviesPagination);

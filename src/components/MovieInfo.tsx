@@ -9,9 +9,9 @@ interface IProps {
 
 const MovieInfo: FC<IProps> = ({ movie }) => {
     return (
-        <div className={styles.container} style={{ backgroundImage: `url(${movie.poster_path})` }}>
+        <div className={styles.container}>
             <div className={styles.overlay}>
-                <PosterPreview movie={movie} />
+                <PosterPreview movie={movie}/>
                 <div className={styles.details}>
                     <h1 className={styles.title}>{movie.title}</h1>
                     <p className={styles.overview}>{movie.overview}</p>

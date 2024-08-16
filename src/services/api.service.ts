@@ -1,5 +1,5 @@
 import axios from "axios";
-import {baseUrl} from "@/BaseUrl/BaseUrl";
+import {baseUrl, urls} from "@/BaseUrl/BaseUrl";
 import {tokenApi} from "@/BaseUrl/token";
 import {IPaginationMoviesModel} from "@/Models/IPaginationMoviesModel";
 import {MovieModel} from "@/Models/MovieModel";
@@ -12,15 +12,20 @@ axiosInstance.interceptors.request.use((request)=>{
     return request;
 })
 export const mService = {
-    getAllMovies: async (): Promise<IPaginationMoviesModel> => {
-        let movies = await axiosInstance.get<IPaginationMoviesModel>(`/discover/movie`);
+    getAllMovies: async (page:number|string): Promise<IPaginationMoviesModel> => {
+        let movies = await axiosInstance.get<IPaginationMoviesModel>(`/discover/movie?page=${page}`);
         return movies.data.results;
     },
     getMovieById: async (id: number | string): Promise<MovieModel> => {
-        let movie = await axiosInstance.get<MovieModel>(`/movie/${id}`)
-            .then(response => response.data);
-        return movie.data;
+        let movie =fetch(`${baseUrl}${urls.movie.byId(id)}`, {
+            headers: { 'Authorization': `Bearer ${tokenApi}` }
+        }).then(value => value.json());
+        return movie;
     },
+    getSearchMovies: async (query: string): Promise<IPaginationMoviesModel> => {
+        let movies = await axiosInstance.get<IPaginationMoviesModel>(`/search/movie?keyword=${query}`);
+        return movies.data.results;
+    }
     // getGenres: async (): Promise<any> => {
     //     let genres = await axiosInstance.get(`/genre/movie/list`);
     //     return genres.data.genres;

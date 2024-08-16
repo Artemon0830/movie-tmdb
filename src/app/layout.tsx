@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import {Provider} from "react-redux";
 import {store} from "@/redux/Store";
+import SearchComponent from "@/components/Search Component";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
 
       <Header/>
+      <SearchComponent/>
       {children}
      </body>
     </html>

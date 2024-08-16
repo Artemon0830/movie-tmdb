@@ -5,8 +5,8 @@ import { posterUrl } from '@/BaseUrl/posterUrl';
 const PosterPreview:FC<{ movie: MovieModel }> = ({ movie }) => {
     return (
         <img
-            src={`${posterUrl}${movie.poster_path}`}
-            alt={movie.title}
+            src={`${posterUrl}${movie?.poster_path}`}
+            alt={movie?.title}
         />
 
     );

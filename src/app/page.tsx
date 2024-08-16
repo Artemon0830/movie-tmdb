@@ -4,10 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import MoviesPage from './movies/page';
 
 const App = () => {
-  return (
-      <Router>
-        <MoviesPage />
-      </Router>
+  return (<div></div>
+
   );
 };
 
