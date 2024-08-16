@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.details {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.overview {
+    font-size: 16px;
+    color: #ddd;
+    margin-top: 10px;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.releaseDate, .rating {
+    font-size: 14px;
+    color: #bbb;
+}
+.voteAverage {
+    font-size: 14px;
+    color: #bbb;
+}
