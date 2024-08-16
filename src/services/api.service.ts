@@ -22,10 +22,15 @@ export const mService = {
         }).then(value => value.json());
         return movie;
     },
-    getSearchMovies: async (query: string): Promise<IPaginationMoviesModel> => {
-        let movies = await axiosInstance.get<IPaginationMoviesModel>(`/search/movie?keyword=${query}`);
+    getSearchMovies: async (query: string): Promise<MovieModel[]> => {
+        let movies = await axiosInstance.get<MovieModel[]>(`/search/movie?query=${query}`);
         return movies.data.results;
+    },
+    getGenres: async (): Promise<GenreModel[]> => {
+        let genres = await axiosInstance.get<GenreModel[]>(`/genre/movie/list`);
+        return genres.data.results;
     }
+
     // getGenres: async (): Promise<any> => {
     //     let genres = await axiosInstance.get(`/genre/movie/list`);
     //     return genres.data.genres;

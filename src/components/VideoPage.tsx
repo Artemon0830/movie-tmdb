@@ -9,8 +9,7 @@ const VideoPage:FC<IProps>= ({movie}) => {
 
     return (
         <div>
-
-                <iframe src={`${videoUrl}${movie.id}/videos`} width={500}height={500} ></iframe>
+                <iframe src={`${videoUrl}${movie.id}/videos`} ></iframe>
         </div>
     );
 };

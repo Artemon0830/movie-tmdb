@@ -1,9 +1,19 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 
-const GenreComponent:FC<IProps> = () => {
+// Define the GenreModel interface if not already defined
+interface GenreModel {
+    id: number;
+    name: string;
+}
+
+interface IProps {
+    genre: GenreModel;
+}
+
+const GenreComponent: FC<IProps> = ({ genre }) => {
     return (
         <div>
-
+            {genre.name}
         </div>
     );
 };

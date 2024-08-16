@@ -1,52 +1,54 @@
 'use client';
-import React, { useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { mService } from '@/services/api.service';
 import { MovieModel } from '@/Models/MovieModel';
-import MovieInfo from "@/components/MovieInfo";
+import { useRouter, useSearchParams } from "next/navigation";
+import MoviesList from "@/components/MoviesList";
 
-const SearchComponent = () => {
+const SearchComponent: FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [searchResults, setSearchResults] = useState<MovieModel[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [movies, setMovies] = useState<MovieModel[]>([]);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query');
 
-    const formSearch = async (data: any) => {
-        setIsLoading(true);
-        setError(null);
-
-        try {
-            const results = await mService.getSearchMovies(data.search);
-            setSearchResults(results.results || []);
-        } catch (err) {
-            setError('An error occurred while searching.');
-        } finally {
-            setIsLoading(false);
+    const formSearch = async (data: { search: string }) => {
+        const searchQuery = data.search.trim();
+        if (searchQuery) {
+            router.push(`/movies/search?query=${searchQuery}`);
         }
     };
+
+    useEffect(() => {
+        const fetchMovies = async () => {
+            if (query) {
+                const moviesSearch = await mService.getSearchMovies(query);
+                setMovies(moviesSearch);
+            }
+        };
+
+        fetchMovies();
+    }, [query]);
 
     return (
         <div>
             <form onSubmit={handleSubmit(formSearch)}>
-                <input type='text' {...register('search', { required: true })} />
+                <input
+                    type='text'
+                    {...register('search')}
+                    defaultValue={query || ''}
+                />
                 {errors.search && <span>This field is required</span>}
-                <button type='submit' disabled={isLoading}>
-                    {isLoading ? 'Searching...' : 'Search'}
-                </button>
+                <button type='submit'>Search</button>
             </form>
 
-            {error && <p>{error}</p>}
-
             <div>
-                {
-                    searchResults.length > 0 ? (
-                        searchResults.map((movie) => (
-                            <MovieInfo key={movie.id} movie={movie} />
-                        ))
-                    ) : (
-                        <p>No results found</p>
-                    )
-                }
+                {movies.length > 0 ? (
+                    <MoviesList movies={movies} />
+                ) : (
+                    <p>No movies found.</p>
+                )}
             </div>
         </div>
     );
