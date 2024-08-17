@@ -30,6 +30,12 @@ export const mService = {
     getGenres: async (): Promise<GenreModel[]> => {
         let genres = await axiosInstance.get<GenreModel[]>(`/genre/movie/list`);
         return genres.data.genres;
+    },
+    getGenreById: async (id: number | string): Promise<GenreModel> => {
+        const response = await axiosInstance.get<GenreModel>(`/genre/movie/list`);
+        const genre = response.data.genres.find((genre: GenreModel) => genre.id === Number(id));
+        if (!genre) throw new Error(`Genre with id ${id} not found`);
+        return genre;
     }
 
     // getGenres: async (): Promise<any> => {

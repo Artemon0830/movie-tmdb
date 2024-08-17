@@ -10,15 +10,22 @@ const GenreBadgeWithMovie: FC = () => {
     const [movies, setMovies] = useState<MovieModel[]>([])
     const [genres, setGenres] = useState<GenreModel[]>([])
     useEffect(() => {
-        mService.getGenres().then(value => {
-            if(value){
-            setGenres(value)};
-        });
-        mService.getAllMovies(1).then(value => {
-            if(value){
-            setMovies(value)};
-        })
+        const service = async ()=> {
+            await mService.getGenres().then(value => {
+                if (value) {
+                    setGenres(value)
+                }
+                ;
+            });
+            await mService.getAllMovies(1).then(value => {
+                if (value) {
+                    setMovies(value)
+                }
 
+            })
+
+        }
+        service();
     }, []);
     return (
         <div>
