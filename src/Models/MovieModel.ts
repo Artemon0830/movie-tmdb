@@ -3,7 +3,7 @@ export interface MovieModel {
     page : number;
     adult: boolean;
     backdrop_path: string;
-    genre_ids: Array<number>;
+    genre_ids: number[];
     id: number;
     original_language: string;
     original_title: string;
@@ -17,4 +17,5 @@ export interface MovieModel {
     vote_count: number;
     total_pages: number;
     total_results: number;
+    genres: GenreModel[];
 }

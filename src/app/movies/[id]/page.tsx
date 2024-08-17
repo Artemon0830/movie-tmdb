@@ -1,7 +1,8 @@
 import React from 'react';
 import { mService } from '@/services/api.service';
 import MovieInfo from '@/components/MovieInfo';
-import {MovieModel} from "@/Models/MovieModel"; // Ensure this is imported
+import {MovieModel} from "@/Models/MovieModel";
+import GenreBadge from "@/components/GenreBadge"; // Ensure this is imported
 
 type Params = { id: string };
 

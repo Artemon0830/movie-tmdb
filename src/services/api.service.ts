@@ -3,6 +3,7 @@ import {baseUrl, urls} from "@/BaseUrl/BaseUrl";
 import {tokenApi} from "@/BaseUrl/token";
 import {IPaginationMoviesModel} from "@/Models/IPaginationMoviesModel";
 import {MovieModel} from "@/Models/MovieModel";
+import {GenreModel} from "@/Models/GenreModel";
 
 let axiosInstance = axios.create({
     baseURL:baseUrl
@@ -28,7 +29,7 @@ export const mService = {
     },
     getGenres: async (): Promise<GenreModel[]> => {
         let genres = await axiosInstance.get<GenreModel[]>(`/genre/movie/list`);
-        return genres.data.results;
+        return genres.data.genres;
     }
 
     // getGenres: async (): Promise<any> => {

@@ -4,6 +4,8 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import {Router} from "react-router";
+import GenreBadge from "@/components/GenreBadge";
+import GenderBadge from "@/components/GenreBadge";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
 
       <Header/>
+      <GenderBadge/>
       {children}
 
      </body>
