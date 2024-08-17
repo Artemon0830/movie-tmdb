@@ -28,15 +28,20 @@ export const mService = {
         return movies.data.results;
     },
     getGenres: async (): Promise<GenreModel[]> => {
-        let genres = await axiosInstance.get<GenreModel[]>(`/genre/movie/list`);
+        let genres = await axiosInstance.get<GenreModel[] >(`/genre/movie/list`);
         return genres.data.genres;
+
     },
-    getGenreById: async (id: number | string): Promise<GenreModel> => {
-        const response = await axiosInstance.get<GenreModel>(`/genre/movie/list`);
-        const genre = response.data.genres.find((genre: GenreModel) => genre.id === Number(id));
-        if (!genre) throw new Error(`Genre with id ${id} not found`);
-        return genre;
-    }
+    getMoviesByGenre: async (genreId: number): Promise<MovieModel[]> => {
+        let movies = await axiosInstance.get<MovieModel[]>(`/discover/movie?with_genres=${genreId}`);
+        return movies.data.results;
+    },
+    // getGenreById: async (id: number | string): Promise<GenreModel> => {
+    //     const response = await axiosInstance.get<GenreModel>(`/genre/movie/list`);
+    //     const genre = response.data.genres.find((genre: GenreModel) => genre.id === Number(id));
+    //     if (!genre) throw new Error(`Genre with id ${id} not found`);
+    //     return genre;
+    // }
 
     // getGenres: async (): Promise<any> => {
     //     let genres = await axiosInstance.get(`/genre/movie/list`);

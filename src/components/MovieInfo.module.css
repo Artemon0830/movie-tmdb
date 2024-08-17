@@ -1,51 +1,33 @@
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-size: cover;
-    background-position: center;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 600px;
+.poster {
+    flex: 1;
+    margin-right: 1rem;
 }
 
 .details {
-    margin-top: 20px;
-    text-align: center;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
+    font-size: 2em;
+    margin-bottom: 0.5rem;
 }
 
 .overview {
-    font-size: 16px;
-    color: #ddd;
-    margin-top: 10px;
+    margin-bottom: 1rem;
 }
 
-.meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.releaseDate, .rating {
-    font-size: 14px;
-    color: #bbb;
-}
-.voteAverage {
-    font-size: 14px;
-    color: #bbb;
+.releaseDate, .voteAverage {
+    margin-bottom: 0.5rem;
 }

@@ -5,6 +5,7 @@ import { mService } from '@/services/api.service';
 import { MovieModel } from '@/Models/MovieModel';
 import { useRouter, useSearchParams } from "next/navigation";
 import MoviesList from "@/components/MoviesList";
+import styles from './SearchComponent.module.css';
 
 const SearchComponent: FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -32,23 +33,20 @@ const SearchComponent: FC = () => {
     }, [query]);
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(formSearch)}>
+        <div className={styles.searchContainer}>
+            <form onSubmit={handleSubmit(formSearch)} className={styles.searchForm}>
                 <input
                     type='text'
                     {...register('search')}
                     defaultValue={query || ''}
+                    className={styles.searchInput}
                 />
-                {errors.search && <span>This field is required</span>}
-                <button type='submit'>Search</button>
+                {errors.search && <span className={styles.errorMessage}>This field is required</span>}
+                <button type='submit' className={styles.searchButton}>Search</button>
             </form>
 
             <div>
-                {movies.length > 0 ? (
-                    <MoviesList movies={movies} />
-                ) : (
-                    <p>No movies found.</p>
-                )}
+                <MoviesList movies={movies} />
             </div>
         </div>
     );

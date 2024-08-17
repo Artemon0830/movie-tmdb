@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StarsRating: React.FC<{ rating: number }> = ({ rating }) => {
-    const stars = Array.from({ length: 5 }, (_, index) => (
+    const stars = Array.from({}, (_, index) => (
         <span key={index} className={index < rating ? 'filled' : ''}>★</span>
     ));
 

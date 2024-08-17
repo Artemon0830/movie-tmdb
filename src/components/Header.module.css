@@ -1,0 +1,20 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.headerLink {
+  margin: 0 10px;
+  text-decoration: none;
+  color: indigo;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.headerLink:hover {
+  color: orangered;
+}

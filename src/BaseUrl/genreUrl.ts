@@ -1,0 +1,1 @@
+export const genreUrl:string= 'https://api.themoviedb.org/3/discover/movie?with_genres=';

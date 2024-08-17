@@ -1,25 +1,17 @@
 'use client'
 import React from 'react';
 import Link from "next/link";
-import SearchComponent from "@/components/Search Component";
-import SearchPage from "@/app/movies/search/page";
-import MoviesPage from "@/app/movies/page";
-import MoviesList from "@/components/MoviesList";
-import moviesList from "@/components/MoviesList";
+import styles from './Header.module.css';
 
 const Header = () => {
-    let movies;
     return (
-        <div>
-            <ul>
-
-                <li><Link href={'/'}>Home</Link></li>
-                <li><Link href={'/movies'}>Movie</Link></li>
-                <Link href={'/movies/search'}>Search</Link>
-
-
-            </ul>
+        <div className={styles.headerContainer}>
+            <Link href={'/'} className={styles.headerLink}>Home</Link>
+            <Link href={'/movies'} className={styles.headerLink}>Movies</Link>
+            <Link href={'/movies/search'} className={styles.headerLink}>Search</Link>
+            <Link href={'/genres'} className={styles.headerLink}>Genres</Link>
         </div>
     );
 }
+
 export default Header;
