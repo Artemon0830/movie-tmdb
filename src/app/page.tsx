@@ -1,10 +1,14 @@
 'use client';
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import MoviesPage from './movies/page';
+
+import {Provider} from "react-redux";
+import {store} from "@/redux/store";
+import ThemeComponent from "@/components/Theme/ThemeComponent";
 
 const App = () => {
-  return (<div></div>
+  return (<div>
+          <ThemeComponent/>
+      </div>
 
   );
 };

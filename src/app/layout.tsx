@@ -3,9 +3,9 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import {Router} from "react-router";
-import GenreBadge from "@/components/GenreBadge";
-import GenderBadge from "@/components/GenreBadge";
+import {Provider} from "react-redux";
+import {store} from "@/redux/store";
+import ThemeComponent from "@/components/Theme/ThemeComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +23,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
 
+
       <Header/>
-      {children}
+          {children}
+
+
+
+
+
+
 
      </body>
     </html>
