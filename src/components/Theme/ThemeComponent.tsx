@@ -1,18 +1,16 @@
 'use client';
 import React, { useState } from 'react';
 import { MyContext } from "@/theme/store";
-import Theme from "@/components/Theme/Theme";
-import Toggle from "@/components/Theme/Toggle";
 
 const ThemeComponent = () => {
-    let lightTheme  = {
+    const lightTheme = {
         backgroundColor: 'white',
         color: 'black'
-    }
-    let darkTheme = {
+    };
+    const darkTheme = {
         backgroundColor: 'black',
         color: 'white'
-    }
+    };
 
     const [globalTheme, setGlobalTheme] = useState<string>('lightTheme');
 
@@ -26,6 +24,10 @@ const ThemeComponent = () => {
                     setGlobalTheme(prevState => prevState === 'lightTheme' ? 'darkTheme' : 'lightTheme');
                 }
             }}>
+                <button onClick={() => setGlobalTheme(prevState => prevState === 'lightTheme' ? 'darkTheme' : 'lightTheme')}>
+                    Toggle Theme
+                </button>
+                <h2>Current Theme: {globalTheme}</h2>
             </MyContext.Provider>
         </div>
     );

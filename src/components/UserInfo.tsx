@@ -1,11 +1,12 @@
-// src/components/UserInfo.tsx
+
 import React, {FC} from 'react';
 
 const UserInfo:FC = () => {
     return (
         <div>
-            <div className="circle"></div>
-            <span>Username</span>
+            <h3>User:Art0830</h3>
+            <p>Role:admin</p>
+            <p>email:artem0830@gmail.com</p>
         </div>
     );
 };

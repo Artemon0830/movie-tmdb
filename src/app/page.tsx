@@ -1,13 +1,12 @@
 'use client';
 import React from 'react';
-
-import {Provider} from "react-redux";
-import {store} from "@/redux/store";
+import {MyContext} from "@/theme/store";
 import ThemeComponent from "@/components/Theme/ThemeComponent";
+import Theme from "@/components/Theme/Theme";
 
 const App = () => {
   return (<div>
-          <ThemeComponent/>
+
       </div>
 
   );

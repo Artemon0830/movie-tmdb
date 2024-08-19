@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import styles from './Pagination.module.css';
 
 const Pagination = () => {
     const router = useRouter();
@@ -12,14 +13,18 @@ const Pagination = () => {
     };
 
     return (
-        <div>
+        <div className={styles.paginationContainer}>
             <button
+                className={styles.pageButton}
                 onClick={() => handlePageChange(parseInt(page) - 1)}
                 disabled={parseInt(page) <= 1}
             >
                 prev
             </button>
-            <button onClick={() => handlePageChange(parseInt(page) + 1)}>
+            <button
+                className={styles.pageButton}
+                onClick={() => handlePageChange(parseInt(page) + 1)}
+            >
                 next
             </button>
         </div>

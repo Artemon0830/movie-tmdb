@@ -1,12 +1,13 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { mService } from '@/services/api.service';
-import { GenreModel } from '@/Models/GenreModel';
-import { MovieModel } from '@/Models/MovieModel';
+import React, {FC, useEffect, useState} from 'react';
+import {useSearchParams} from 'next/navigation';
+import {mService} from '@/services/api.service';
+import {GenreModel} from '@/Models/GenreModel';
+import {MovieModel} from '@/Models/MovieModel';
 import MoviesList from '@/components/MoviesList';
 import Link from 'next/link';
+
 const GenreBadge: FC = () => {
     const [genres, setGenres] = useState<GenreModel[]>([]);
     const [movies, setMovies] = useState<MovieModel[]>([]);
